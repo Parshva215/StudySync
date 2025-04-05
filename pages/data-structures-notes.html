@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structures Notes - StudySync</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../css/animations.css" rel="stylesheet">
+    <script>
+        // Check authentication
+        window.addEventListener('load', function() {
+            if (!localStorage.getItem('isLoggedIn')) {
+                window.location.href = '../login.html';
+            }
+        });
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userName');
+            window.location.href = '../login.html';
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <a href="../index.html" class="flex items-center space-x-2 nav-link">
+                        <i class="fas fa-book-open text-2xl text-blue-600"></i>
+                        <span class="text-xl font-bold text-gray-800">StudySync</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-gray-600 hover:text-blue-600 nav-link">Home</a>
+                    <a href="courses.html" class="text-gray-600 hover:text-blue-600 nav-link">Courses</a>
+                    <a href="class-notes.html" class="text-gray-600 hover:text-blue-600 nav-link">Class Notes</a>
+                    <a href="team.html" class="text-gray-600 hover:text-blue-600 nav-link">Our Team</a>
+                    <button onclick="logout()" class="text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-sign-out-alt mr-1"></i>Logout
+                    </button>
+                </div>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-gray-600"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="pt-32 pb-12 bg-gradient-to-r from-blue-600 to-blue-800 hero-section">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col space-y-4">
+                <a href="data-structures.html" class="inline-flex items-center text-white hover:text-gray-200 w-fit button-transition">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Back to Course
+                </a>
+                <div class="text-white">
+                    <h1 class="text-4xl font-bold mb-4">Data Structures Notes</h1>
+                    <p class="text-xl opacity-90">Download comprehensive study materials for your course</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notes Section -->
+    <section class="py-12 page-transition">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Note 1 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-pdf text-red-500 text-2xl mr-3"></i>
+                            <h3 class="text-lg font-semibold">Introduction to Data Structures</h3>
+                        </div>
+                        <span class="text-sm text-gray-500">Unit 1</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Basic concepts, ADT, complexity analysis, and fundamental principles.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 button-transition">
+                        <i class="fas fa-download mr-2"></i>
+                        Download PDF
+                    </a>
+                </div>
+
+                <!-- Note 2 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-pdf text-red-500 text-2xl mr-3"></i>
+                            <h3 class="text-lg font-semibold">Arrays and Memory</h3>
+                        </div>
+                        <span class="text-sm text-gray-500">Unit 2</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Array operations, memory allocation, and implementation techniques.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 button-transition">
+                        <i class="fas fa-download mr-2"></i>
+                        Download PDF
+                    </a>
+                </div>
+
+                <!-- Note 3 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-pdf text-red-500 text-2xl mr-3"></i>
+                            <h3 class="text-lg font-semibold">Linked Lists</h3>
+                        </div>
+                        <span class="text-sm text-gray-500">Unit 3</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Singly linked lists, doubly linked lists, and circular linked lists.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 button-transition">
+                        <i class="fas fa-download mr-2"></i>
+                        Download PDF
+                    </a>
+                </div>
+
+                <!-- Note 4 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-pdf text-red-500 text-2xl mr-3"></i>
+                            <h3 class="text-lg font-semibold">Stacks and Queues</h3>
+                        </div>
+                        <span class="text-sm text-gray-500">Unit 4</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Stack operations, queue implementations, and applications.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 button-transition">
+                        <i class="fas fa-download mr-2"></i>
+                        Download PDF
+                    </a>
+                </div>
+
+                <!-- Note 5 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-pdf text-red-500 text-2xl mr-3"></i>
+                            <h3 class="text-lg font-semibold">Trees and Binary Trees</h3>
+                        </div>
+                        <span class="text-sm text-gray-500">Unit 5</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Tree concepts, binary trees, traversal methods, and applications.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 button-transition">
+                        <i class="fas fa-download mr-2"></i>
+                        Download PDF
+                    </a>
+                </div>
+
+                <!-- Note 6 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-pdf text-red-500 text-2xl mr-3"></i>
+                            <h3 class="text-lg font-semibold">Binary Search Trees</h3>
+                        </div>
+                        <span class="text-sm text-gray-500">Unit 6</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">BST properties, operations, and balancing techniques.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 button-transition">
+                        <i class="fas fa-download mr-2"></i>
+                        Download PDF
+                    </a>
+                </div>
+
+                <!-- Note 7 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-pdf text-red-500 text-2xl mr-3"></i>
+                            <h3 class="text-lg font-semibold">AVL Trees</h3>
+                        </div>
+                        <span class="text-sm text-gray-500">Unit 7</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">AVL tree rotations, balancing, and implementation details.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 button-transition">
+                        <i class="fas fa-download mr-2"></i>
+                        Download PDF
+                    </a>
+                </div>
+
+                <!-- Note 8 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-pdf text-red-500 text-2xl mr-3"></i>
+                            <h3 class="text-lg font-semibold">Graphs</h3>
+                        </div>
+                        <span class="text-sm text-gray-500">Unit 8</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Graph representation, traversal algorithms, and applications.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 button-transition">
+                        <i class="fas fa-download mr-2"></i>
+                        Download PDF
+                    </a>
+                </div>
+
+                <!-- Note 9 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-pdf text-red-500 text-2xl mr-3"></i>
+                            <h3 class="text-lg font-semibold">Hashing</h3>
+                        </div>
+                        <span class="text-sm text-gray-500">Unit 9</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Hash functions, collision resolution, and hash table implementations.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 button-transition">
+                        <i class="fas fa-download mr-2"></i>
+                        Download PDF
+                    </a>
+                </div>
+
+                <!-- Note 10 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-pdf text-red-500 text-2xl mr-3"></i>
+                            <h3 class="text-lg font-semibold">Advanced Tree Structures</h3>
+                        </div>
+                        <span class="text-sm text-gray-500">Unit 10</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Red-black trees, B-trees, and their practical applications.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 button-transition">
+                        <i class="fas fa-download mr-2"></i>
+                        Download PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">StudySync</h3>
+                    <p class="text-gray-400 mb-4">Your smart learning companion for academic success.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition-colors nav-link">Courses</a></li>
+                        <li><a href="class-notes.html" class="text-gray-400 hover:text-white transition-colors nav-link">Class Notes</a></li>
+                        <li><a href="team.html" class="text-gray-400 hover:text-white transition-colors nav-link">Our Team</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2"></i>
+                            support@studysync.com
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone mr-2"></i>
+                            +91 9172719234
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            MPSTME, NMIMS
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 StudySync. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/mobile-menu.js"></script>
+</body>
+</html> 

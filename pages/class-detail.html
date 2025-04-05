@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structures Class Summary - StudySync</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        // Check authentication
+        window.addEventListener('load', function() {
+            if (!localStorage.getItem('isLoggedIn')) {
+                window.location.href = '../login.html';
+            }
+        });
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userName');
+            window.location.href = '../login.html';
+        }
+    </script>
+    <style>
+        .chat-container {
+            height: 400px;
+            overflow-y: auto;
+        }
+        @media (max-width: 768px) {
+            .chat-container {
+                height: 300px;
+            }
+            .header-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-4 sm:px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <a href="../index.html" class="flex items-center space-x-2 nav-link">
+                        <i class="fas fa-book-open text-2xl text-blue-600"></i>
+                        <span class="text-xl font-bold text-gray-800">StudySync</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-gray-600 hover:text-blue-600 nav-link">Home</a>
+                    <a href="courses.html" class="text-gray-600 hover:text-blue-600 nav-link">Courses</a>
+                    <a href="class-notes.html" class="text-gray-600 hover:text-blue-600 nav-link">Class Notes</a>
+                    <a href="team.html" class="text-gray-600 hover:text-blue-600 nav-link">Our Team</a>
+                    <button onclick="logout()" class="text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-sign-out-alt mr-1"></i>Logout
+                    </button>
+                </div>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-gray-600"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Class Detail Section -->
+    <section class="pt-24 sm:pt-32 pb-12 sm:pb-20 page-transition">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="max-w-6xl mx-auto">
+                <!-- Header -->
+                <div class="bg-white rounded-lg shadow-lg p-4 sm:p-6 mb-6 sm:mb-8 hover-card">
+                    <div class="header-content flex flex-col sm:flex-row justify-between items-start gap-4">
+                        <div class="w-full">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <a href="class-notes.html" class="text-gray-600 hover:text-blue-600 button-transition">
+                                    <i class="fas fa-arrow-left"></i> Back to Uploads
+                                </a>
+                            </div>
+                            <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">Data Structures - Binary Search Trees</h1>
+                            <p class="text-gray-600 mt-2">March 15, 2025 | 10:00 AM - 11:30 AM</p>
+                        </div>
+                        <div class="header-buttons flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+                            <button class="w-full sm:w-auto px-4 py-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 button-transition">
+                                <i class="fas fa-download mr-2"></i>Download
+                            </button>
+                            <button class="w-full sm:w-auto px-4 py-2 bg-green-100 text-green-600 rounded-lg hover:bg-green-200 button-transition">
+                                <i class="fas fa-share-alt mr-2"></i>Share
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full hover-card">Binary Trees</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full hover-card">Traversal</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full hover-card">Operations</span>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+                    <!-- Class Content -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-white rounded-lg shadow-lg p-4 sm:p-6 hover-card">
+                            <h2 class="text-xl sm:text-2xl font-bold mb-4">Class Summary</h2>
+                            <div class="prose max-w-none">
+                                <h3 class="text-lg sm:text-xl font-semibold mb-2">Introduction to Binary Search Trees</h3>
+                                <p class="mb-4">Today's class focused on the fundamental concepts of Binary Search Trees (BSTs), their properties, and operations. We covered the following key points:</p>
+                                
+                                <h4 class="text-base sm:text-lg font-semibold mb-2">Key Concepts</h4>
+                                <ul class="list-disc pl-6 mb-4">
+                                    <li>Definition and properties of BSTs</li>
+                                    <li>Binary tree vs Binary Search Tree</li>
+                                    <li>Time complexity of operations</li>
+                                    <li>Balanced vs Unbalanced BSTs</li>
+                                </ul>
+
+                                <h4 class="text-base sm:text-lg font-semibold mb-2">Operations Covered</h4>
+                                <ul class="list-disc pl-6 mb-4">
+                                    <li>Insertion: O(log n) average case</li>
+                                    <li>Deletion: O(log n) average case</li>
+                                    <li>Search: O(log n) average case</li>
+                                    <li>Traversal methods (In-order, Pre-order, Post-order)</li>
+                                </ul>
+
+                                <h4 class="text-base sm:text-lg font-semibold mb-2">Example Code</h4>
+                                <pre class="bg-gray-100 p-4 rounded-lg mb-4 overflow-x-auto hover-card">
+class Node {
+    int data;
+    Node left, right;
+    
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+class BinarySearchTree {
+    Node root;
+    
+    // Insert method
+    Node insert(Node root, int data) {
+        if (root == null) {
+            root = new Node(data);
+            return root;
+        }
+        if (data < root.data)
+            root.left = insert(root.left, data);
+        else if (data > root.data)
+            root.right = insert(root.right, data);
+        return root;
+    }
+}</pre>
+
+                                <h4 class="text-base sm:text-lg font-semibold mb-2">Additional Resources</h4>
+                                <ul class="list-disc pl-6">
+                                    <li>Recommended reading: Chapter 12 of "Data Structures and Algorithms"</li>
+                                    <li>Practice problems on LeetCode</li>
+                                    <li>Visualization tool: BST Visualizer</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chatbot Section -->
+                    <div class="lg:col-span-1">
+                        <div class="bg-white rounded-lg shadow-lg p-4 sm:p-6">
+                            <h2 class="text-xl sm:text-2xl font-bold mb-4">Study Assistant</h2>
+                            <div class="chat-container mb-4 space-y-4" id="chatContainer">
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <p class="text-sm text-gray-700">Hello! I'm your study assistant. Ask me anything about today's class on Binary Search Trees.</p>
+                                </div>
+                            </div>
+                            <div class="flex space-x-2">
+                                <input type="text" id="chatInput" class="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your question...">
+                                <button id="sendButton" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">StudySync</h3>
+                    <p class="text-gray-400 mb-4">Your smart learning companion for academic success.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition-colors nav-link">Courses</a></li>
+                        <li><a href="class-notes.html" class="text-gray-400 hover:text-white transition-colors nav-link">Class Notes</a></li>
+                        <li><a href="team.html" class="text-gray-400 hover:text-white transition-colors nav-link">Our Team</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2"></i>
+                            support@studysync.com
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone mr-2"></i>
+                            +91 9172719234
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            MPSTME, NMIMS
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 StudySync. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Knowledge base for Binary Search Trees
+        const knowledgeBase = {
+            'bst': 'A Binary Search Tree is a binary tree where for each node, all elements in the left subtree are less than the node, and all elements in the right subtree are greater than the node.',
+            'properties': 'BST properties include: left subtree contains smaller elements, right subtree contains larger elements, no duplicate values, and balanced trees have O(log n) operations.',
+            'insertion': 'Insertion in a BST involves comparing the new value with nodes and moving left if smaller or right if larger until finding an empty spot. Average time complexity is O(log n).',
+            'deletion': 'Deletion in BST involves finding the node, then handling three cases: leaf node, one child, or two children. For two children, we typically use the inorder successor.',
+            'traversal': 'BST traversal methods include: inorder (left-root-right), preorder (root-left-right), and postorder (left-right-root). Inorder gives sorted output.',
+            'search': 'Searching in a BST involves comparing the target value with nodes and moving left if smaller or right if larger. Average time complexity is O(log n).',
+            'complexity': 'BST operations (insert, delete, search) have average time complexity of O(log n) for balanced trees, but can degrade to O(n) for unbalanced trees.',
+            'balanced': 'A balanced BST has roughly equal height for left and right subtrees. This ensures O(log n) operation complexity.',
+            'implementation': 'BST implementation uses a Node class with data and left/right child pointers. The tree is manipulated through recursive methods.',
+            'applications': 'BSTs are used in database indexing, file systems, and maintaining sorted data. They provide efficient insertion, deletion, and search operations.'
+        };
+
+        const chatInput = document.getElementById('chatInput');
+        const sendButton = document.getElementById('sendButton');
+        const chatContainer = document.getElementById('chatContainer');
+
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = isUser ? 'bg-blue-600 text-white p-4 rounded-lg ml-auto max-w-[80%]' : 'bg-blue-50 p-4 rounded-lg max-w-[80%]';
+            messageDiv.innerHTML = `<p class="text-sm">${message}</p>`;
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function generateResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            for (const [keyword, response] of Object.entries(knowledgeBase)) {
+                if (message.includes(keyword)) {
+                    return response;
+                }
+            }
+            return "I can help you with topics related to Binary Search Trees. Try asking about properties, insertion, deletion, traversal, or implementation.";
+        }
+
+        function handleUserMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            addMessage(message, true);
+            chatInput.value = '';
+
+            setTimeout(() => {
+                const response = generateResponse(message);
+                addMessage(response);
+            }, 500);
+        }
+
+        sendButton.addEventListener('click', handleUserMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleUserMessage();
+            }
+        });
+    </script>
+    <script src="../js/mobile-menu.js"></script>
+</body>
+</html> 

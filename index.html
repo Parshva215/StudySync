@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySync - Your Learning Companion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/animations.css" rel="stylesheet">
+    <script>
+        // Check authentication
+        window.addEventListener('load', function() {
+            if (!localStorage.getItem('isLoggedIn')) {
+                window.location.href = 'login.html';
+            }
+        });
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userName');
+            window.location.href = 'login.html';
+        }
+    </script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2 nav-link">
+                        <i class="fas fa-book-open text-2xl text-blue-600"></i>
+                        <span class="text-xl font-bold text-gray-800">StudySync</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600 nav-link">Home</a>
+                    <a href="pages/courses.html" class="text-gray-600 hover:text-blue-600 nav-link">Courses</a>
+                    <a href="pages/class-notes.html" class="text-gray-600 hover:text-blue-600 nav-link">Class Notes</a>
+                    <a href="pages/team.html" class="text-gray-600 hover:text-blue-600 nav-link">Our Team</a>
+                    <button onclick="logout()" class="text-gray-600 hover:text-blue-600 nav-link">
+                        <i class="fas fa-sign-out-alt mr-1"></i>Logout
+                    </button>
+                </div>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-gray-600"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-20 hero-section">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 text-white">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Your Smart Learning Companion</h1>
+                    <p class="text-xl mb-8">StudySync helps you master your subjects with AI-powered assistance, past paper analysis, and collaborative learning tools.</p>
+                    <a href="pages/courses.html" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 button-transition">
+                        Explore Courses
+                    </a>
+                </div>
+                <div class="md:w-1/2 mt-10 md:mt-0">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 page-transition">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card hover-card bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-robot text-5xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">AI-Powered Chatbot</h3>
+                    <p class="text-gray-600">Get instant answers to your questions with our intelligent chatbot assistant.</p>
+                </div>
+                <div class="feature-card hover-card bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-chart-bar text-5xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Question Paper Analyzer</h3>
+                    <p class="text-gray-600">Analyze past papers and predict important topics for your exams.</p>
+                </div>
+                <div class="feature-card hover-card bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-users text-5xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Collaborative Learning</h3>
+                    <p class="text-gray-600">Share notes and summaries with your classmates through the CR upload system.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="bg-gray-100 py-20 page-transition">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">How It Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center hover-card">
+                    <i class="fas fa-book text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="font-bold mb-2">Choose Your Course</h3>
+                    <p class="text-gray-600">Select from our range of courses</p>
+                </div>
+                <div class="text-center hover-card">
+                    <i class="fas fa-book-open text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="font-bold mb-2">Access Materials</h3>
+                    <p class="text-gray-600">Get study materials and notes</p>
+                </div>
+                <div class="text-center hover-card">
+                    <i class="fas fa-question-circle text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="font-bold mb-2">Ask Questions</h3>
+                    <p class="text-gray-600">Use our AI chatbot for help</p>
+                </div>
+                <div class="text-center hover-card">
+                    <i class="fas fa-graduation-cap text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="font-bold mb-2">Excel in Exams</h3>
+                    <p class="text-gray-600">Analyze past papers and succeed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">StudySync</h3>
+                    <p class="text-gray-400 mb-4">Your smart learning companion for academic success.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="pages/courses.html" class="text-gray-400 hover:text-white transition-colors nav-link">Courses</a></li>
+                        <li><a href="pages/class-notes.html" class="text-gray-400 hover:text-white transition-colors nav-link">Class Notes</a></li>
+                        <li><a href="pages/team.html" class="text-gray-400 hover:text-white transition-colors nav-link">Our Team</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2"></i>
+                            support@studysync.com
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone mr-2"></i>
+                            +91 9172719234
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            MPSTME, NMIMS
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 StudySync. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/mobile-menu.js"></script>
+</body>
+</html> 

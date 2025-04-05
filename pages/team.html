@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - StudySync</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../css/animations.css" rel="stylesheet">
+    <script>
+        // Check authentication
+        window.addEventListener('load', function() {
+            if (!localStorage.getItem('isLoggedIn')) {
+                window.location.href = '../login.html';
+            }
+        });
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userName');
+            window.location.href = '../login.html';
+        }
+    </script>
+    <style>
+        .team-card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center"> 
+                <div class="flex items-center space-x-2">
+                    <a href="../index.html" class="flex items-center space-x-2 nav-link">
+                        <i class="fas fa-book-open text-2xl text-blue-600"></i>
+                        <span class="text-xl font-bold text-gray-800">StudySync</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-gray-600 hover:text-blue-600 nav-link">Home</a>
+                    <a href="courses.html" class="text-gray-600 hover:text-blue-600 nav-link">Courses</a>
+                    <a href="class-notes.html" class="text-gray-600 hover:text-blue-600 nav-link">Class Notes</a>
+                    <a href="team.html" class="text-gray-600 hover:text-blue-600 nav-link">Our Team</a>
+                    <button onclick="logout()" class="text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-sign-out-alt mr-1"></i>Logout
+                    </button>
+                </div>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-gray-600"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Team Section -->
+    <section class="pt-32 pb-20 page-transition">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl font-bold text-center mb-4">Meet Our Team</h1>
+            <p class="text-xl text-gray-600 text-center mb-12">The passionate individuals behind StudySync</p>
+
+            <!-- Hero Illustration -->
+            <div class="mb-12">
+                <i class="fas fa-users text-9xl text-blue-600 opacity-50 mx-auto block text-center"></i>
+            </div>
+
+            <!-- Team Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="team-card hover-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full">
+                                <i class="fas fa-user text-2xl text-blue-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold">Parshva Samdadiya</h3>
+                                <p class="text-gray-600">Team Member</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-card hover-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full">
+                                <i class="fas fa-user text-2xl text-green-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold">Kenisha Kothari</h3>
+                                <p class="text-gray-600">Team Member</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-card hover-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full">
+                                <i class="fas fa-user text-2xl text-purple-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold">Prem Gangar</h3>
+                                <p class="text-gray-600">Team Member</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="team-card hover-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-100 p-3 rounded-full">
+                                <i class="fas fa-user text-2xl text-yellow-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold">Mahi Shah</h3>
+                                <p class="text-gray-600">Team Member</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 5 -->
+                <div class="team-card hover-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 p-3 rounded-full">
+                                <i class="fas fa-user text-2xl text-red-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold">Gia Maniar</h3>
+                                <p class="text-gray-600">Team Member</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 6 -->
+                <div class="team-card hover-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 p-3 rounded-full">
+                                <i class="fas fa-user text-2xl text-indigo-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold">Havish Shah</h3>
+                                <p class="text-gray-600">Team Member</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">StudySync</h3>
+                    <p class="text-gray-400 mb-4">Your smart learning companion for academic success.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition-colors nav-link">Courses</a></li>
+                        <li><a href="class-notes.html" class="text-gray-400 hover:text-white transition-colors nav-link">Class Notes</a></li>
+                        <li><a href="team.html" class="text-gray-400 hover:text-white transition-colors nav-link">Our Team</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2"></i>
+                            support@studysync.com
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone mr-2"></i>
+                            +91 9172719234
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            MPSTME, NMIMS
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 StudySync. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/mobile-menu.js"></script>
+</body>
+</html> 

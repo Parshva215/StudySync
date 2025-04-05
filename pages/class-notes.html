@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Notes & Resources - StudySync</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../css/animations.css" rel="stylesheet">
+    <script>
+        // Check authentication
+        window.addEventListener('load', function() {
+            if (!localStorage.getItem('isLoggedIn')) {
+                window.location.href = '../login.html';
+            }
+        });
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userName');
+            window.location.href = '../login.html';
+        }
+    </script>
+    <style>
+        .template-card:hover {
+            transform: translateY(-2px);
+            transition: transform 0.2s ease;
+        }
+        .file-preview {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <a href="../index.html" class="flex items-center space-x-2 nav-link">
+                        <i class="fas fa-book-open text-2xl text-blue-600"></i>
+                        <span class="text-xl font-bold text-gray-800">StudySync</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-gray-600 hover:text-blue-600 nav-link">Home</a>
+                    <a href="courses.html" class="text-gray-600 hover:text-blue-600 nav-link">Courses</a>
+                    <a href="cr-upload.html" class="text-gray-600 hover:text-blue-600 nav-link">Class Notes</a>
+                    <a href="team.html" class="text-gray-600 hover:text-blue-600 nav-link">Our Team</a>
+                    <button onclick="logout()" class="text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-sign-out-alt mr-1"></i>Logout
+                    </button>
+                </div>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-gray-600"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CR Upload Section -->
+    <section class="pt-32 pb-20 page-transition">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl font-bold text-center mb-4">Class Notes & Resources</h1>
+            <p class="text-xl text-gray-600 text-center mb-12">Share and access class materials with your peers</p>
+
+            <!-- Quick Actions -->
+            <div class="max-w-4xl mx-auto mb-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <button class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow hover-card">
+                    <i class="fas fa-magic text-blue-600 mb-2"></i>
+                    <h3 class="font-semibold">AI-Assisted Summary</h3>
+                    <p class="text-sm text-gray-600">Generate summary using AI</p>
+                </button>
+                <button class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow hover-card">
+                    <i class="fas fa-users text-green-600 mb-2"></i>
+                    <h3 class="font-semibold">Collaborative Notes</h3>
+                    <p class="text-sm text-gray-600">Work with classmates</p>
+                </button>
+                <button class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow hover-card">
+                    <i class="fas fa-history text-purple-600 mb-2"></i>
+                    <h3 class="font-semibold">View History</h3>
+                    <p class="text-sm text-gray-600">Past uploads & revisions</p>
+                </button>
+            </div>
+
+            <!-- Upload Form -->
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 hover-card">
+                <form id="uploadForm" class="space-y-6">
+                    <!-- Course Selection -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="course" class="block text-sm font-medium text-gray-700 mb-2">Select Course</label>
+                            <select id="course" name="course" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent input-transition" required>
+                                <option value="">Choose a course</option>
+                                <option value="ds">Data Structures</option>
+                                <option value="algo">Algorithms</option>
+                                <option value="db">Database Systems</option>
+                            </select>
+                        </div>
+
+                        <!-- Template Selection -->
+                        <div>
+                            <label for="template" class="block text-sm font-medium text-gray-700 mb-2">Select Template</label>
+                            <select id="template" name="template" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent input-transition">
+                                <option value="">Custom Format</option>
+                                <option value="lecture">Lecture Notes</option>
+                                <option value="lab">Lab Session</option>
+                                <option value="discussion">Discussion Summary</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Date and Time -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="date" class="block text-sm font-medium text-gray-700 mb-2">Class Date</label>
+                            <input type="date" id="date" name="date" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent input-transition" required>
+                        </div>
+                        <div>
+                            <label for="time" class="block text-sm font-medium text-gray-700 mb-2">Class Time</label>
+                            <input type="time" id="time" name="time" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent input-transition" required>
+                        </div>
+                    </div>
+
+                    <!-- Summary Text -->
+                    <div>
+                        <label for="summary" class="block text-sm font-medium text-gray-700 mb-2">Class Summary</label>
+                        <div class="flex space-x-2 mb-2">
+                            <button type="button" class="px-3 py-1 bg-gray-100 rounded hover:bg-gray-200 button-transition">
+                                <i class="fas fa-bold"></i>
+                            </button>
+                            <button type="button" class="px-3 py-1 bg-gray-100 rounded hover:bg-gray-200 button-transition">
+                                <i class="fas fa-italic"></i>
+                            </button>
+                            <button type="button" class="px-3 py-1 bg-gray-100 rounded hover:bg-gray-200 button-transition">
+                                <i class="fas fa-list-ul"></i>
+                            </button>
+                            <button type="button" class="px-3 py-1 bg-gray-100 rounded hover:bg-gray-200 button-transition">
+                                <i class="fas fa-list-ol"></i>
+                            </button>
+                        </div>
+                        <textarea id="summary" name="summary" rows="6" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent input-transition" placeholder="Enter the key points covered in today's class..." required></textarea>
+                    </div>
+
+                    <!-- Key Topics -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Key Topics</label>
+                        <div class="flex flex-wrap gap-2">
+                            <input type="text" class="p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent input-transition" placeholder="Add topic...">
+                            <button type="button" class="px-3 py-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 button-transition">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- File Upload -->
+                    <div>
+                        <label for="files" class="block text-sm font-medium text-gray-700 mb-2">Upload Files</label>
+                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover-card">
+                            <div class="space-y-1 text-center">
+                                <i class="fas fa-cloud-upload-alt text-4xl text-gray-400"></i>
+                                <div class="flex text-sm text-gray-600">
+                                    <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none button-transition">
+                                        <span>Upload files</span>
+                                        <input id="file-upload" name="file-upload" type="file" class="sr-only" multiple>
+                                    </label>
+                                    <p class="pl-1">or drag and drop</p>
+                                </div>
+                                <p class="text-xs text-gray-500">PDF, DOC, PPT, Images up to 10MB</p>
+                            </div>
+                        </div>
+                        <!-- File Preview -->
+                        <div class="file-preview mt-4 hidden">
+                            <h4 class="text-sm font-medium text-gray-700 mb-2">Uploaded Files</h4>
+                            <div class="space-y-2">
+                                <!-- File preview items will be added here dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Collaboration Settings -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Collaboration Settings</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded text-blue-600">
+                                <span class="ml-2 text-sm text-gray-600">Allow classmates to edit</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded text-blue-600">
+                                <span class="ml-2 text-sm text-gray-600">Notify class when uploaded</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 button-transition">
+                            Upload Summary
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Recent Uploads -->
+            <div class="max-w-4xl mx-auto mt-12">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold">Recent Uploads</h2>
+                    <div class="flex space-x-2">
+                        <button class="px-3 py-1 bg-gray-100 rounded hover:bg-gray-200 button-transition">
+                            <i class="fas fa-filter"></i>
+                        </button>
+                        <button class="px-3 py-1 bg-gray-100 rounded hover:bg-gray-200 button-transition">
+                            <i class="fas fa-sort"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <!-- Upload Item 1 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <a href="class-detail.html" class="font-bold text-lg hover:text-blue-600">Data Structures - Class Summary</a>
+                                <p class="text-gray-600">March 15, 2025</p>
+                            </div>
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Uploaded</span>
+                                <button class="text-gray-400 hover:text-gray-600">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Binary Trees</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Traversal</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Operations</span>
+                        </div>
+                        <p class="mt-2 text-gray-600">Today's class covered binary search trees and their operations. Key points included insertion, deletion, and traversal methods.</p>
+                        <div class="mt-4 flex items-center space-x-4 text-sm text-gray-500">
+                            <span><i class="fas fa-eye"></i> 24 views</span>
+                            <span><i class="fas fa-comment"></i> 3 comments</span>
+                            <span><i class="fas fa-download"></i> 8 downloads</span>
+                        </div>
+                    </div>
+
+                    <!-- Upload Item 2 -->
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-bold text-lg">Algorithms - Class Summary</h3>
+                                <p class="text-gray-600">March 14, 2025</p>
+                            </div>
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Uploaded</span>
+                                <button class="text-gray-400 hover:text-gray-600">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Dynamic Programming</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Optimization</span>
+                        </div>
+                        <p class="mt-2 text-gray-600">Discussion on dynamic programming and its applications in solving optimization problems.</p>
+                        <div class="mt-4 flex items-center space-x-4 text-sm text-gray-500">
+                            <span><i class="fas fa-eye"></i> 18 views</span>
+                            <span><i class="fas fa-comment"></i> 2 comments</span>
+                            <span><i class="fas fa-download"></i> 5 downloads</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">StudySync</h3>
+                    <p class="text-gray-400 mb-4">Your smart learning companion for academic success.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition-colors nav-link">Courses</a></li>
+                        <li><a href="class-notes.html" class="text-gray-400 hover:text-white transition-colors nav-link">Class Notes</a></li>
+                        <li><a href="team.html" class="text-gray-400 hover:text-white transition-colors nav-link">Our Team</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2"></i>
+                            support@studysync.com
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone mr-2"></i>
+                            +91 9172719234
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            MPSTME, NMIMS
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 StudySync. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Summary uploaded successfully!');
+        });
+
+        // File upload preview
+        document.getElementById('file-upload').addEventListener('change', function(e) {
+            const preview = document.querySelector('.file-preview');
+            const previewContainer = preview.querySelector('.space-y-2');
+            previewContainer.innerHTML = '';
+            
+            if (this.files.length > 0) {
+                preview.classList.remove('hidden');
+                Array.from(this.files).forEach(file => {
+                    const div = document.createElement('div');
+                    div.className = 'flex items-center justify-between p-2 bg-gray-50 rounded';
+                    div.innerHTML = `
+                        <div class="flex items-center">
+                            <i class="fas fa-file text-gray-400 mr-2"></i>
+                            <span class="text-sm">${file.name}</span>
+                        </div>
+                        <button class="text-red-500 hover:text-red-700">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    previewContainer.appendChild(div);
+                });
+            } else {
+                preview.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html> 

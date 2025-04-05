@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study Assistant - StudySync</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        // Check authentication
+        window.addEventListener('load', function() {
+            if (!localStorage.getItem('isLoggedIn')) {
+                window.location.href = '../login.html';
+            }
+        });
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userName');
+            window.location.href = '../login.html';
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <a href="../index.html" class="flex items-center space-x-2">
+                        <i class="fas fa-book-open text-2xl text-blue-600"></i>
+                        <span class="text-xl font-bold text-gray-800">StudySync</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-gray-600 hover:text-blue-600">Home</a>
+                    <a href="courses.html" class="text-gray-600 hover:text-blue-600">Courses</a>
+                    <a href="class-notes.html" class="text-gray-600 hover:text-blue-600">Class Notes</a>
+                    <a href="team.html" class="text-gray-600 hover:text-blue-600">Our Team</a>
+                    <button onclick="logout()" class="text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-sign-out-alt mr-1"></i>Logout
+                    </button>
+                </div>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-gray-600"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Chat Interface -->
+    <div class="min-h-screen pt-16 pb-20">
+        <!-- Chat Header -->
+        <div class="bg-white shadow-lg">
+            <div class="container mx-auto px-6 py-6">
+                <a href="data-structures.html" class="inline-flex items-center text-gray-600 hover:text-blue-600 mb-4">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Back to Course
+                </a>
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-robot text-2xl text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">AI Study Assistant</h1>
+                        <p class="text-gray-600">Ask me anything about Data Structures</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div class="container mx-auto px-6 py-8">
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-20">
+                <div id="chat-messages" class="space-y-6 mb-6">
+                    <!-- AI Welcome Message -->
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-robot text-sm text-white"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="bg-gray-100 rounded-lg p-4 inline-block">
+                                Hi! I'm your AI study assistant for Data Structures. I can help you understand concepts from your course notes. What would you like to know about?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Input -->
+                <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
+                    <div class="container mx-auto px-6">
+                        <form id="chat-form" class="flex space-x-4">
+                            <input type="text" id="user-input" 
+                                class="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="Ask about Data Structures concepts...">
+                            <button type="submit" 
+                                class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 flex items-center">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Send
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">StudySync</h3>
+                    <p class="text-gray-400 mb-4">Your smart learning companion for academic success.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition-colors">Courses</a></li>
+                        <li><a href="class-notes.html" class="text-gray-400 hover:text-white transition-colors">Class Notes</a></li>
+                        <li><a href="team.html" class="text-gray-400 hover:text-white transition-colors">Our Team</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2"></i>
+                            support@studysync.com
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone mr-2"></i>
+                            +91 9172719234
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            MPSTME, NMIMS
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 StudySync. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dummy knowledge base based on the notes
+        const knowledgeBase = {
+            'introduction': 'Data Structures are fundamental building blocks that help organize and store data efficiently. The course covers basic concepts, ADT (Abstract Data Types), and complexity analysis.',
+            'arrays': 'Arrays are contiguous memory locations that store elements of the same type. They support operations like insertion, deletion, and random access. Memory allocation in arrays is done at compile time.',
+            'linked lists': 'Linked Lists are linear data structures where elements are stored in nodes, connected through pointers. Types include singly linked lists, doubly linked lists, and circular linked lists.',
+            'stacks': 'Stacks are LIFO (Last In First Out) data structures supporting push and pop operations. They are commonly used for function calls and expression evaluation.',
+            'queues': 'Queues are FIFO (First In First Out) data structures with operations like enqueue and dequeue. They are used in scheduling and buffer management.',
+            'trees': 'Trees are hierarchical data structures with a root node and child nodes. Binary trees are special trees where each node has at most two children.',
+            'bst': 'Binary Search Trees (BST) are binary trees with the property that the left subtree contains smaller elements and the right subtree contains larger elements than the root.',
+            'avl': 'AVL trees are self-balancing binary search trees where the heights of left and right subtrees differ by at most one. They use rotation operations for balancing.',
+            'graphs': 'Graphs are non-linear data structures consisting of vertices and edges. They can be represented using adjacency matrices or adjacency lists.',
+            'hashing': 'Hashing is a technique to map data to a fixed-size array using a hash function. Collision resolution techniques include chaining and open addressing.'
+        };
+
+        const chatForm = document.getElementById('chat-form');
+        const chatMessages = document.getElementById('chat-messages');
+        const userInput = document.getElementById('user-input');
+
+        chatForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const userMessage = userInput.value.trim().toLowerCase();
+            if (!userMessage) return;
+
+            // Add user message to chat
+            addMessage('user', userMessage);
+            userInput.value = '';
+
+            // Generate AI response
+            setTimeout(() => {
+                const response = generateResponse(userMessage);
+                addMessage('ai', response);
+            }, 500);
+        });
+
+        function addMessage(type, message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'flex items-start space-x-4' + (type === 'user' ? ' justify-end' : '');
+            
+            if (type === 'ai') {
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-sm text-white"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="bg-gray-100 rounded-lg p-4 inline-block">${message}</p>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="flex-1 text-right">
+                        <p class="bg-blue-600 text-white rounded-lg p-4 inline-block">${message}</p>
+                    </div>
+                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-user text-sm text-gray-600"></i>
+                    </div>
+                `;
+            }
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function generateResponse(userMessage) {
+            // Check if any keywords from the knowledge base are in the user's message
+            for (const [keyword, response] of Object.entries(knowledgeBase)) {
+                if (userMessage.includes(keyword)) {
+                    return response;
+                }
+            }
+
+            // Default response if no matching keywords
+            return "I can help you with topics from your Data Structures notes. Try asking about specific concepts like arrays, linked lists, trees, graphs, or hashing.";
+        }
+    </script>
+    <script src="../js/mobile-menu.js"></script>
+</body>
+</html> 

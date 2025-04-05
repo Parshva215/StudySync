@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structures QP Analyzer - StudySync</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../css/animations.css" rel="stylesheet">
+    <script>
+        // Check authentication
+        window.addEventListener('load', function() {
+            if (!localStorage.getItem('isLoggedIn')) {
+                window.location.href = '../login.html';
+            }
+        });
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userName');
+            window.location.href = '../login.html';
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <a href="../index.html" class="flex items-center space-x-2 nav-link">
+                        <i class="fas fa-book-open text-2xl text-blue-600"></i>
+                        <span class="text-xl font-bold text-gray-800">StudySync</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-gray-600 hover:text-blue-600 nav-link">Home</a>
+                    <a href="courses.html" class="text-gray-600 hover:text-blue-600 nav-link">Courses</a>
+                    <a href="class-notes.html" class="text-gray-600 hover:text-blue-600 nav-link">Class Notes</a>
+                    <a href="team.html" class="text-gray-600 hover:text-blue-600 nav-link">Our Team</a>
+                    <button onclick="logout()" class="text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-sign-out-alt mr-1"></i>Logout
+                    </button>
+                </div>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-gray-600"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="pt-32 pb-12 bg-gradient-to-r from-blue-600 to-blue-800 hero-section">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col space-y-4">
+                <a href="data-structures.html" class="inline-flex items-center text-white hover:text-gray-200 w-fit button-transition">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Back to Course
+                </a>
+                <div class="text-white">
+                    <h1 class="text-4xl font-bold mb-4">Data Structures QP Analyzer</h1>
+                    <p class="text-xl opacity-90">Analyze past papers and get insights for better exam preparation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-12 page-transition">
+        <div class="container mx-auto px-6">
+            <!-- Past Papers Section -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8 hover-card">
+                <h2 class="text-2xl font-bold mb-6">Past Question Papers</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- End Sem 2024 -->
+                    <div class="border rounded-lg p-6 hover-card">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="font-bold text-lg">End Semester 2024</h3>
+                                <p class="text-gray-600 text-sm">March 2024</p>
+                            </div>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Latest</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center button-transition">
+                                <i class="fas fa-download mr-2"></i>
+                                Download PDF
+                            </a>
+                            <button onclick="showAnalysis('2024')" class="text-green-600 hover:text-green-800 font-medium flex items-center button-transition">
+                                <i class="fas fa-chart-line mr-2"></i>
+                                Analyze
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- End Sem 2023 -->
+                    <div class="border rounded-lg p-6 hover-card">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="font-bold text-lg">End Semester 2023</h3>
+                                <p class="text-gray-600 text-sm">November 2023</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center button-transition">
+                                <i class="fas fa-download mr-2"></i>
+                                Download PDF
+                            </a>
+                            <button onclick="showAnalysis('2023')" class="text-green-600 hover:text-green-800 font-medium flex items-center button-transition">
+                                <i class="fas fa-chart-line mr-2"></i>
+                                Analyze
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- End Sem 2022 -->
+                    <div class="border rounded-lg p-6 hover-card">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="font-bold text-lg">End Semester 2022</h3>
+                                <p class="text-gray-600 text-sm">November 2022</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center button-transition">
+                                <i class="fas fa-download mr-2"></i>
+                                Download PDF
+                            </a>
+                            <button onclick="showAnalysis('2022')" class="text-green-600 hover:text-green-800 font-medium flex items-center button-transition">
+                                <i class="fas fa-chart-line mr-2"></i>
+                                Analyze
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- End Sem 2021 -->
+                    <div class="border rounded-lg p-6 hover-card">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="font-bold text-lg">End Semester 2021</h3>
+                                <p class="text-gray-600 text-sm">November 2021</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center button-transition">
+                                <i class="fas fa-download mr-2"></i>
+                                Download PDF
+                            </a>
+                            <button onclick="showAnalysis('2021')" class="text-green-600 hover:text-green-800 font-medium flex items-center button-transition">
+                                <i class="fas fa-chart-line mr-2"></i>
+                                Analyze
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- End Sem 2020 -->
+                    <div class="border rounded-lg p-6 hover-card">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="font-bold text-lg">End Semester 2020</h3>
+                                <p class="text-gray-600 text-sm">November 2020</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center button-transition">
+                                <i class="fas fa-download mr-2"></i>
+                                Download PDF
+                            </a>
+                            <button onclick="showAnalysis('2020')" class="text-green-600 hover:text-green-800 font-medium flex items-center button-transition">
+                                <i class="fas fa-chart-line mr-2"></i>
+                                Analyze
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Archive Link -->
+                    <div class="border rounded-lg p-6 hover-card bg-gray-50 flex items-center justify-center">
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center button-transition">
+                            <i class="fas fa-archive mr-2"></i>
+                            View Archive (2015-2019)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload QP Section -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8 hover-card">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-2">Upload Question Paper</h2>
+                        <p class="text-gray-600">Upload your question paper for instant analysis and insights</p>
+                    </div>
+                    <i class="fas fa-file-upload text-3xl text-blue-600"></i>
+                </div>
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-700 mb-2 font-medium">Paper Type</label>
+                            <select class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 input-transition">
+                                <option value="">Select Paper Type</option>
+                                <option value="end_sem">End Semester</option>
+                                <option value="mid_sem">Mid Semester</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2 font-medium">Year</label>
+                            <input type="number" placeholder="Enter year" min="2000" max="2024"
+                                class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 input-transition">
+                        </div>
+                    </div>
+                    
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-500 transition-colors cursor-pointer bg-gray-50 hover-card">
+                        <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-3"></i>
+                        <p class="text-gray-600 font-medium">Click to upload or drag and drop your question paper</p>
+                        <p class="text-sm text-gray-500 mt-1">Supported formats: PDF (Max size: 10MB)</p>
+                        <input type="file" class="hidden" accept=".pdf">
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 flex items-center justify-center button-transition">
+                        <i class="fas fa-upload mr-2"></i>
+                        Upload and Analyze
+                    </button>
+                </form>
+            </div>
+
+            <!-- Analysis Section -->
+            <div id="analysisSection" class="hidden grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                <div class="lg:col-span-2 flex items-center justify-between bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center">
+                        <h2 class="text-2xl font-bold" id="analysisPaperTitle">End Semester 2024 Analysis</h2>
+                        <span class="ml-4 text-sm text-gray-500">Last updated: March 2024</span>
+                    </div>
+                    <button onclick="hideAnalysis()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <!-- Topic Analysis -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold">Topic Analysis</h2>
+                        <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                            <i class="fas fa-filter mr-1"></i>
+                            Filter Topics
+                        </button>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="border-b pb-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Trees & Graphs</span>
+                                <span class="text-blue-600">85% appearance</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-600 rounded-full h-2" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="border-b pb-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Linked Lists</span>
+                                <span class="text-blue-600">75% appearance</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-600 rounded-full h-2" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="border-b pb-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Stack & Queue</span>
+                                <span class="text-blue-600">65% appearance</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-600 rounded-full h-2" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question Pattern Stats -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-6">Question Pattern Stats</h2>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center p-4 bg-blue-50 rounded-lg">
+                            <p class="text-4xl font-bold text-blue-600 mb-2">60%</p>
+                            <p class="text-sm text-gray-600">Theory Questions</p>
+                        </div>
+                        <div class="text-center p-4 bg-green-50 rounded-lg">
+                            <p class="text-4xl font-bold text-green-600 mb-2">40%</p>
+                            <p class="text-sm text-gray-600">Programming</p>
+                        </div>
+                        <div class="text-center p-4 bg-purple-50 rounded-lg">
+                            <p class="text-4xl font-bold text-purple-600 mb-2">75%</p>
+                            <p class="text-sm text-gray-600">Implementation Based</p>
+                        </div>
+                        <div class="text-center p-4 bg-orange-50 rounded-lg">
+                            <p class="text-4xl font-bold text-orange-600 mb-2">25%</p>
+                            <p class="text-sm text-gray-600">Concept Based</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Important Topics -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-6">High Priority Topics</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 p-4 bg-red-50 rounded-lg">
+                            <i class="fas fa-exclamation-circle text-red-500 text-xl"></i>
+                            <div>
+                                <h3 class="font-bold">AVL Trees</h3>
+                                <p class="text-sm text-gray-600">Frequently asked with implementation</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 p-4 bg-yellow-50 rounded-lg">
+                            <i class="fas fa-star text-yellow-500 text-xl"></i>
+                            <div>
+                                <h3 class="font-bold">Graph Traversals</h3>
+                                <p class="text-sm text-gray-600">BFS & DFS implementations</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 p-4 bg-green-50 rounded-lg">
+                            <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                            <div>
+                                <h3 class="font-bold">Linked List Operations</h3>
+                                <p class="text-sm text-gray-600">Focus on deletion and reversal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Tips -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-6">Success Tips</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-clock text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold mb-1">Time Management</h3>
+                                <p class="text-gray-600 text-sm">Allocate 15 minutes for reading and planning. Focus on implementation questions first.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-code text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold mb-1">Practice Code Writing</h3>
+                                <p class="text-gray-600 text-sm">Write complete implementations. Partial code usually gets partial marks.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-lightbulb text-green-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold mb-1">Concept Clarity</h3>
+                                <p class="text-gray-600 text-sm">Focus on understanding the core concepts. Theory questions often test practical understanding.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New: AI Question Predictor -->
+                <div class="lg:col-span-2 bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold mb-2">AI Question Predictor</h2>
+                            <p class="text-gray-600">Based on pattern analysis and topic frequency</p>
+                        </div>
+                        <span class="bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-medium">
+                            <i class="fas fa-robot mr-2"></i>
+                            AI Powered
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <h3 class="font-bold text-lg">Highly Probable Topics</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                                    <span class="font-medium">AVL Tree Rotations</span>
+                                    <span class="text-green-600">95% probability</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                                    <span class="font-medium">Graph Shortest Path</span>
+                                    <span class="text-green-600">90% probability</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                                    <span class="font-medium">Heap Operations</span>
+                                    <span class="text-green-600">85% probability</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <h3 class="font-bold text-lg">Expected Question Types</h3>
+                            <div class="space-y-3">
+                                <div class="p-3 border rounded-lg">
+                                    <p class="font-medium mb-1">Implementation Question</p>
+                                    <p class="text-sm text-gray-600">Write a program to implement Red-Black Tree insertion with proper balancing</p>
+                                </div>
+                                <div class="p-3 border rounded-lg">
+                                    <p class="font-medium mb-1">Theory Question</p>
+                                    <p class="text-sm text-gray-600">Compare and contrast AVL Trees and Red-Black Trees with examples</p>
+                                </div>
+                                <div class="p-3 border rounded-lg">
+                                    <p class="font-medium mb-1">Analysis Question</p>
+                                    <p class="text-sm text-gray-600">Analyze the time complexity of different graph traversal methods</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New: Exam Strategy Generator -->
+                <div class="lg:col-span-2 bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold mb-2">Personalized Exam Strategy</h2>
+                            <p class="text-gray-600">Custom strategy based on question paper analysis</p>
+                        </div>
+                        <button class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700">
+                            <i class="fas fa-download mr-2"></i>
+                            Download PDF
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="p-4 bg-blue-50 rounded-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-clock text-blue-600"></i>
+                                </div>
+                                <h3 class="font-bold">Time Allocation</h3>
+                            </div>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex justify-between">
+                                    <span>Reading Time</span>
+                                    <span class="font-medium">15 mins</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Theory Section</span>
+                                    <span class="font-medium">45 mins</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Programming</span>
+                                    <span class="font-medium">90 mins</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Review Time</span>
+                                    <span class="font-medium">30 mins</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="p-4 bg-purple-50 rounded-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-list-check text-purple-600"></i>
+                                </div>
+                                <h3 class="font-bold">Question Priority</h3>
+                            </div>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center">
+                                    <span class="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center mr-2">1</span>
+                                    <span>Implementation Questions</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-2">2</span>
+                                    <span>Short Theory Questions</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-6 h-6 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mr-2">3</span>
+                                    <span>Long Theory Questions</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-6 h-6 bg-red-100 text-red-600 rounded-full flex items-center justify-center mr-2">4</span>
+                                    <span>Optional Questions</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="p-4 bg-green-50 rounded-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-lightbulb text-green-600"></i>
+                                </div>
+                                <h3 class="font-bold">Key Tips</h3>
+                            </div>
+                            <ul class="space-y-2 text-sm list-disc pl-4">
+                                <li>Start with implementation questions</li>
+                                <li>Draw diagrams for tree/graph problems</li>
+                                <li>Write pseudo-code before implementation</li>
+                                <li>Include time complexity analysis</li>
+                                <li>Test edge cases in programs</li>
+                                <li>Comment your code properly</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">StudySync</h3>
+                    <p class="text-gray-400 mb-4">Your smart learning companion for academic success.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition-colors nav-link">Courses</a></li>
+                        <li><a href="class-notes.html" class="text-gray-400 hover:text-white transition-colors nav-link">Class Notes</a></li>
+                        <li><a href="team.html" class="text-gray-400 hover:text-white transition-colors nav-link">Our Team</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2"></i>
+                            support@studysync.com
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone mr-2"></i>
+                            +91 9172719234
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            MPSTME, NMIMS
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 StudySync. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add before </body> tag -->
+    <script>
+        function showAnalysis(year) {
+            const analysisSection = document.getElementById('analysisSection');
+            const analysisPaperTitle = document.getElementById('analysisPaperTitle');
+            
+            // Update title based on year
+            analysisPaperTitle.textContent = `End Semester ${year} Analysis`;
+            
+            // Show analysis section with smooth animation
+            analysisSection.classList.remove('hidden');
+            analysisSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function hideAnalysis() {
+            const analysisSection = document.getElementById('analysisSection');
+            analysisSection.classList.add('hidden');
+        }
+    </script>
+    <script src="../js/mobile-menu.js"></script>
+</body>
+</html> 
