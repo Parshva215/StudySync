@@ -22,7 +22,7 @@ StudySync is a modern, interactive learning platform designed to enhance the edu
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/study-sync.git
+   git clone https://github.com/Parshva215/StudySync.git
    ```
 
 2. Open `index.html` in your browser or set up a local server.
